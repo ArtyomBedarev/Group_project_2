@@ -103,7 +103,7 @@ for name in games_names:
 
     games_info.append(game_info)
 
-    time.sleep(0.2)
+    time.sleep(0.3)
 
 
 df_api = pd.DataFrame(games_info)
