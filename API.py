@@ -11,7 +11,7 @@ inp = "pars_games_unique.csv"
 df_original = pd.read_csv(inp)
 games_names = df_original["Название"].tolist()
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.config.fileConfig('logging.conf')
 
 def get_json(url):
     response = requests.get(url)
@@ -73,7 +73,7 @@ for name in games_names:
     stores_url = f"{URL}/games/{game_id}/stores?key={API_KEY}"
     stores_data = get_json(stores_url)
     stores_results = stores_data.get("results", [])
-    store_names = [store_dict.get(s.get("store_id"), f"Unknown ({s.get('store_id')})") for s in stores_results]
+    store_names = [store_dict[s.get("store_id")] for s in stores_results]]
 
     #6) /games/{id}/development-team
     dev_team_url = f"{URL}/games/{game_id}/development-team?key={API_KEY}"
@@ -111,4 +111,4 @@ df_merged = pd.merge(df_original, df_api, on="Название", how="left")
 df_merged.replace(0, pd.NA, inplace=True)
 
 out_df = "df_itog.csv"
-df_merged.to_csv(out_df, index=False, encoding="utf-8-sig")
+df_merged.to_csv(out_df)
