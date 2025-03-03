@@ -1,3 +1,3 @@
 # Group_project_2
 
-Команда 5 API + Scraping
+Команда 5 API + Scraping + EDA
