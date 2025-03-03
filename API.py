@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import time
 import logging
+import logging.config
 
 
 API_KEY = "de7303c846394ab1bb72f7465b697dd8"
